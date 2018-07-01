@@ -23,8 +23,7 @@ Vagrant.configure("2") do |config|
 		"sample.youhey0801.dev.test"
 	]
 
-	config.vm.provision "shell", inline: <<-SHELL
-		sudo chmod 777 /vagrant/init.sh
-		/vagrant/init.sh
-	SHELL
+	# docker project folder
+	config.vm.synced_folder "./src","/vagrant"
+	config.vm.provision :shell, :path => "provision/init.sh"
 end
